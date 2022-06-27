@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Sarala&display=swap');
+
+* {
+	margin: 20px 40px;
+}
+
+h1,
+h2,
+.card-header,
+.card-footer,
+.main-today {
+	color: #3e4a61 !important;
+	font-family: 'Righteous', cursive;
+}
+
+h2 {
+	font-size: 100px !important;
+}
+
+button {
+	font-family: 'Sarala', sans-serif !important;
+}
+
+.alerts {
+	color: #3e4a61;
+	text-decoration: none;
+}
+
+.card {
+	background-color: #dffcad !important;
+}
+
+.main-header {
+	background-color: #afc5ff;
+}
+
+.fa-cloud-sun {
+	color: #ff895d;
+	font-size: 80px;
+}
+
+.fa-cloud-sun-rain {
+	color: #29c6cd;
+	font-size: 80px;
+}
+
+.fa-cloud-moon {
+	color: #537791;
+	font-size: 80px;
+}
+
+.fa-droplet {
+	color: #0c9cee;
+	font-size: 24px;
+}
+
+.main-today,
+.today-temp,
+.week-temp {
+	color: #3e4a61;
+	font-family: 'Sarala', sans-serif;
+	font-size: 24px;
+}
+
+.card-header,
+.card-footer {
+	font-size: 28px;
+}
+
+.card-header,
+.card-footer {
+	background-color: #afc5ff !important;
+}
+
+.main-footer {
+	background-color: #ffe3b0;
+	color: #3e4a61;
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+}

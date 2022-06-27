@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="src/styles.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/3a1af4f515.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type='text/javascript' src="src/config.js"></script>
+
+  <title>🌎 Universal Forecast</title>
+</head>
+
+<body>
+  <header>
+    <div class="container-fluid p-5 mb-4 rounded-5 main-header">
+      <div class="container-fluid">
+        <h1 class="display-5 fw-bold text-center">🌎 Universal Forecast 🌍</h1>
+      </div>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search here city, state, country"
+          aria-label="Search" id="form">
+        <button class="btn btn-secondary rounded-5 ms-3 p-3" type="submit" value="Search" id="search">Search</button>
+        <button class="btn btn-secondary rounded-5 ms-3" type="submit" value="Current" id="current-location">Current
+          Location</button>
+      </form>
+    </div>
+  </header>
+
+
+  <div class="card p-0 border-0 rounded-5">
+    <div class="card-header border-0 p-3 m-0 rounded-5 text-center" id="header-first">
+
+    </div>
+    <div class="row">
+      <div class="col col-md-6 m-0 p-0">
+        <p class="main-today ps-5 pt-4" id="city"></p>
+        <p class="main-today ps-5">
+          <strong id="temperature">0</strong>
+          <a href="#" id="celsius">°C</a>|<a href="#" id="fahrenheit">°F</a>
+        </p>
+        <p class="main-today ps-5">Partly Cloudy</p>
+        <p class="main-today ps-5">Day 84° • Night 73°</p>
+      </div>
+      <div class="col col-md-6 m-0 pt-4">
+        <i class="fa-solid fa-cloud-sun text-center w-100"></i>
+      </div>
+    </div>
+    <div class="card-footer border-0 p-3 m-0 rounded-5 text-center">
+      <a href="#" class="alerts">Weather Alerts!</a>
+    </div>
+  </div>
+
+
+  <div class="card p-0 border-0 rounded-5">
+    <div class="card-header border-0 p-3 m-0 rounded-5 text-center">
+      Today in Jacksonville, NC
+    </div>
+    <div class="row">
+      <div class="col pt-4 text-center today-temp">Morning</div>
+      <div class="col pt-4 text-center today-temp">Afternoon</div>
+      <div class="col pt-4 text-center today-temp">Evening</div>
+      <div class="col pt-4 text-center today-temp">Overnight</div>
+    </div>
+    <div class="row">
+      <div class="col text-center w-100"><i class="fa-solid fa-cloud-sun"></i></div>
+      <div class="col text-center w-100"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+      <div class="col text-center w-100"><i class="fa-solid fa-cloud-moon"></i></div>
+      <div class="col text-center w-100"><i class="fa-solid fa-cloud-moon"></i></div>
+    </div>
+    <div class="row">
+      <div class="col text-center today-temp">81°</div>
+      <div class="col text-center today-temp">79°</div>
+      <div class="col text-center today-temp">76°</div>
+      <div class="col text-center today-temp">74°</div>
+    </div>
+    <div class="row">
+      <div class="col m-0 p-0 text-center w-100 today-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>16%</div>
+      <div class="col m-0 p-0 text-center w-100 today-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>32%</div>
+      <div class="col m-0 p-0 text-center w-100 today-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>22%</div>
+      <div class="col m-0 p-0 text-center w-100 today-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>9%</div>
+    </div>
+    <div class="card-footer border-0 p-3 m-0 rounded-5 text-center">
+      <button class="btn btn-secondary btn-lg rounded-5" type="submit">Hourly Forecast</button>
+    </div>
+  </div>
+
+  <div class="card p-0 border-0 rounded-5">
+    <div class="card-header border-0 p-3 m-0 rounded-5 text-center">
+      This week's forecast Jacksonville, NC
+    </div>
+    <div class="row">
+      <div class="col pt-4 text-center week-temp">Tomorrow</div>
+      <div class="col pt-4 text-center week-temp">Tuesday</div>
+      <div class="col pt-4 text-center week-temp">Wednesday</div>
+      <div class="col pt-4 text-center week-temp">Thursday</div>
+    </div>
+    <div class="row">
+      <div class="col m-0 p-0 text-center w-100"><i class="fa-solid fa-cloud-sun"></i></div>
+      <div class="col m-0 p-0 text-center w-100"><i class="fa-solid fa-cloud-sun"></i></div>
+      <div class="col m-0 p-0 text-center w-100"><i class="fa-solid fa-cloud-sun"></i></div>
+      <div class="col m-0 p-0 text-center w-100"><i class="fa-solid fa-cloud-sun"></i></div>
+    </div>
+    <div class="row">
+      <div class="col text-center week-temp">93° - 75°</div>
+      <div class="col text-center week-temp">99° - 76°</div>
+      <div class="col text-center week-temp">96° - 74°</div>
+      <div class="col text-center week-temp">90° - 74°</div>
+    </div>
+    <div class="row">
+      <div class="col m-0 p-0 text-center w-100 week-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>24%</div>
+      <div class="col m-0 p-0 text-center w-100 week-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>22%</div>
+      <div class="col m-0 p-0 text-center w-100 week-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>22%</div>
+      <div class="col m-0 p-0 text-center w-100 week-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>15%</div>
+    </div>
+    <div class="row card-header border-0 p-3 m-0 rounded-5 text-center"></div>
+    <div class="row">
+      <div class="col pt-4 text-center week-temp">Friday</div>
+      <div class="col pt-4 text-center week-temp">Saturday</div>
+      <div class="col pt-4 text-center week-temp">Sunday</div>
+      <div class="col pt-4 text-center week-temp">Monday</div>
+    </div>
+    <div class="row">
+      <div class="col m-0 p-0 text-center w-100"><i class="fa-solid fa-cloud-sun"></i></div>
+      <div class="col m-0 p-0 text-center w-100"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+      <div class="col m-0 p-0 text-center w-100"><i class="fa-solid fa-cloud-sun"></i></div>
+      <div class="col m-0 p-0 text-center w-100"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+    </div>
+    <div class="row">
+      <div class="col text-center week-temp">90° - 74°</div>
+      <div class="col text-center week-temp">94° - 72°</div>
+      <div class="col text-center week-temp">90° - 74°</div>
+      <div class="col text-center week-temp">94° - 72°</div>
+    </div>
+    <div class="row">
+      <div class="col m-0 p-0 text-center w-100 week-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>15%</div>
+      <div class="col m-0 p-0 text-center w-100 week-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>54%</div>
+      <div class="col m-0 p-0 text-center w-100 week-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>50%</div>
+      <div class="col m-0 p-0 text-center w-100 week-temp"><i class="fa-solid fa-droplet m-2 p-2"></i>54%</div>
+    </div>
+    <div class="card-footer border-0 p-3 m-0 rounded-5 text-center">
+      <button class="btn btn-secondary btn-lg rounded-5" type="submit">More Dates</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container-fluid p-4 pb-2 rounded-5 main-footer align-content-center">
+      <p class="fw-bold text-center">Code with ❤️ by Fabiola Suárez
+      </p>
+      <p class="fw-lighter text-center repo"><a href="https://github.com/fabiolasuarez11/weather-app-shecodes-plus"
+          target="_blank">Open-source
+          Code
+        </a></p>
+    </div>
+  </footer>
+
+  <script src="src/script.js"></script>
+
+</body>
+
+</html>
