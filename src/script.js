@@ -65,7 +65,7 @@ buttonEl.addEventListener('click', () => {
 // NOTE: This part of code works perfectly when I test my code from VS code in the Browser Google Chrome. However, for some reason I don't understand this doesn't work in CodeSandbox.
 
 const buttonCurr = document.querySelector('#current-location');
-buttonCurr.addEventListener('click', () => {
+buttonCurr.addEventListener('click', (event) => {
 	function showTempPos(position) {
 		const lat = Math.round(position.coords.latitude);
 		const lon = Math.round(position.coords.longitude);
@@ -76,6 +76,7 @@ buttonCurr.addEventListener('click', () => {
 		axios.get(apiUrl).then(displayTempPos);
 	}
 
+	event.preventDefault();
 	navigator.geolocation.getCurrentPosition(showTempPos);
 
 	function displayTempPos(response) {
@@ -88,7 +89,6 @@ buttonCurr.addEventListener('click', () => {
 		const tempEle = document.querySelector('#temperature');
 		tempEle.innerHTML = `${realTimeTemp}`;
 	}
-	displayTempPos();
 });
 
 // 🙀Bonus Feature
