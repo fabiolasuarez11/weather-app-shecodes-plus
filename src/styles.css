@@ -21,6 +21,10 @@ button {
 	font-family: 'Sarala', sans-serif !important;
 }
 
+#description {
+	text-transform: capitalize;
+}
+
 .alerts {
 	color: #3e4a61;
 	text-decoration: none;
@@ -51,7 +55,16 @@ button {
 
 .fa-droplet {
 	color: #0c9cee;
-	font-size: 24px;
+	font-size: 20px;
+}
+
+.fa-wind {
+	color: #537791;
+	font-size: 20px;
+}
+
+.humidity {
+	color: #537791;
 }
 
 .main-today,

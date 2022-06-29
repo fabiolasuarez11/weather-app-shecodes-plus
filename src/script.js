@@ -42,27 +42,61 @@ header.innerHTML = `${
 
 // 🕵️‍♀️Feature #2
 // Add a search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
-const buttonEl = document.querySelector('#search');
-buttonEl.addEventListener('click', () => {
+function formatDate(timestamp) {
+	const today = new Date(timestamp);
+	const hours = today.getHours();
+	const minutes = today.getMinutes();
+	const weekDays = [
+		'Sunday',
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday',
+	];
+	const day = weekDays[today.getDay()];
+
+	return `${day} ${hours}:${minutes}`;
+}
+
+function formatDay(timestamp) {
+	const today = new Date(timestamp * 1000);
+	const day = today.getDay();
+	let weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+	return weekDays[day];
+}
+
+const buttonSearch = document.querySelector('#search');
+buttonSearch.addEventListener('click', () => {
 	event.preventDefault();
 	const cityId = document.querySelector('#city');
 	const formId = document.querySelector('#form');
 	// cityId.innerHTML = formId.value;
 
-	// Homework Week 5
-
 	const keyApi = config.OPEN_WEATHER_API_KEY;
 	const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${(cityId.innerHTML =
 		formId.value)}&units=metric`;
 	function showTemp(response) {
+		console.log(response.data);
 		const tempEle = document.querySelector('#temperature');
 		tempEle.innerHTML = `${Math.round(response.data.main.temp)}`;
+
+		const descriptionEle = document.querySelector('#description');
+		descriptionEle.innerHTML = response.data.weather[0].description;
+
+		const humidEle = document.querySelector('#humid');
+		humidEle.innerHTML = response.data.main.humidity;
+
+		const windEle = document.querySelector('#wind');
+		windEle.innerHTML = `${Math.round(response.data.wind.speed)}`;
+
+		const dateElement = document.querySelector('#date');
+		dateElement.innerHTML = formatDate(response.data.dt * 1000);
 	}
 	axios.get(`${apiUrl}&appid=${keyApi}`).then(showTemp);
 });
-
-// Homework Week 5 Bonus
-// NOTE: This part of code works perfectly when I test my code from VS code in the Browser Google Chrome. However, for some reason I don't understand this doesn't work in CodeSandbox.
 
 const buttonCurr = document.querySelector('#current-location');
 buttonCurr.addEventListener('click', (event) => {
@@ -80,7 +114,8 @@ buttonCurr.addEventListener('click', (event) => {
 	navigator.geolocation.getCurrentPosition(showTempPos);
 
 	function displayTempPos(response) {
-		const realTimeTemp = Math.round(response.data.main.temp);
+		console.log(response.data);
+		const realTimeTemp = `${Math.round(response.data.main.temp)}`;
 		console.log(realTimeTemp);
 
 		const cityId = document.querySelector('#city');
@@ -88,6 +123,18 @@ buttonCurr.addEventListener('click', (event) => {
 
 		const tempEle = document.querySelector('#temperature');
 		tempEle.innerHTML = `${realTimeTemp}`;
+
+		const descriptionEle = document.querySelector('#description');
+		descriptionEle.innerHTML = response.data.weather[0].description;
+
+		const humidEle = document.querySelector('#humid');
+		humidEle.innerHTML = response.data.main.humidity;
+
+		const windEle = document.querySelector('#wind');
+		windEle.innerHTML = `${Math.round(response.data.wind.speed)}`;
+
+		const dateElement = document.querySelector('#date');
+		dateElement.innerHTML = formatDate(response.data.dt * 1000);
 	}
 });
 
