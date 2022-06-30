@@ -93,7 +93,7 @@ buttonSearch.addEventListener('click', (event) => {
 		descriptionEle.innerHTML = response.data.weather[0].description;
 		iconEle.setAttribute(
 			'src',
-			`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+			`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
 		);
 		iconEle.setAttribute('alt', response.data.weather[0].description);
 		maxTempEle.innerHTML = Math.round(response.data.main.temp_max);
@@ -139,7 +139,7 @@ buttonCurr.addEventListener('click', (event) => {
 		descriptionEle.innerHTML = response.data.weather[0].description;
 		iconEle.setAttribute(
 			'src',
-			`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+			`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
 		);
 		iconEle.setAttribute('alt', response.data.weather[0].description);
 		maxTempEle.innerHTML = Math.round(response.data.main.temp_max);
