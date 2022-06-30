@@ -5,16 +5,11 @@
 }
 
 h1,
-h2,
 .card-header,
 .card-footer,
 .main-today {
 	color: #3e4a61 !important;
 	font-family: 'Righteous', cursive;
-}
-
-h2 {
-	font-size: 100px !important;
 }
 
 button {
@@ -72,17 +67,13 @@ button {
 .week-temp {
 	color: #3e4a61;
 	font-family: 'Sarala', sans-serif;
-	font-size: 24px;
-}
-
-.card-header,
-.card-footer {
-	font-size: 28px;
+	font-size: 20px;
 }
 
 .card-header,
 .card-footer {
 	background-color: #afc5ff !important;
+	font-size: 24px;
 }
 
 .main-footer {

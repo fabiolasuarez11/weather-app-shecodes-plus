@@ -22,8 +22,7 @@
         <h1 class="display-5 fw-bold text-center">🌎 Universal Forecast 🌍</h1>
       </div>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search here city, state, country"
-          aria-label="Search" id="form">
+        <input class="form-control me-2" type="search" placeholder="Search here city..." aria-label="Search" id="form">
         <button class="btn btn-secondary rounded-5 ms-3 p-3" type="submit" value="Search" id="search">Search</button>
         <button class="btn btn-secondary rounded-5 ms-3" type="submit" value="Current" id="current-location">Current
           Location</button>
@@ -37,14 +36,14 @@
     </div>
     <div class="row">
       <div class="col col-md-6 m-0 p-0">
-        <p class="main-today ps-5 pt-4" id="city">New York</p>
+        <p class="main-today ps-5 pt-4" id="city">Jacksonville</p>
         <p class="main-today ps-5">
           <strong id="temperature" class="m-0">70</strong>
           <a href="#" id="celsius">°C</a>|<a href="#" id="fahrenheit">°F</a>
         </p>
         <p class="main-today ps-5  pt-4">Last updated: <span class="m-0" id="date"></span></p>
         <p class="main-today ps-5  pt-4" id="description">Partly Cloudy</p>
-        <i class="fa-solid fa-cloud-sun ps-5 w-100"></i>
+        <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="Weather condition" id="icon" class="ps-5 w-80" />
       </div>
       <div class="col col-md-6 m-0 pt-4">
         <p class="main-today ps-3  pt-4">Day 84° • Night 73°</p>
