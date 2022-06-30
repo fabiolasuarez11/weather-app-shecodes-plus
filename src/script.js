@@ -83,10 +83,12 @@ buttonSearch.addEventListener('click', (event) => {
 		const dateElement = document.querySelector('#date');
 		const descriptionEle = document.querySelector('#description');
 		const iconEle = document.querySelector('#icon');
+		const maxTempEle = document.querySelector('#max');
+		const minTempEle = document.querySelector('#min');
 		const humidEle = document.querySelector('#humid');
 		const windEle = document.querySelector('#wind');
 
-		tempEle.innerHTML = `${Math.round(response.data.main.temp)}`;
+		tempEle.innerHTML = Math.round(response.data.main.temp);
 		dateElement.innerHTML = formatDate(response.data.dt * 1000);
 		descriptionEle.innerHTML = response.data.weather[0].description;
 		iconEle.setAttribute(
@@ -94,8 +96,10 @@ buttonSearch.addEventListener('click', (event) => {
 			`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
 		);
 		iconEle.setAttribute('alt', response.data.weather[0].description);
+		maxTempEle.innerHTML = Math.round(response.data.main.temp_max);
+		minTempEle.innerHTML = Math.round(response.data.main.temp_min);
 		humidEle.innerHTML = response.data.main.humidity;
-		windEle.innerHTML = `${Math.round(response.data.wind.speed)}`;
+		windEle.innerHTML = Math.round(response.data.wind.speed);
 	}
 	axios.get(`${apiUrl}&appid=${keyApi}`).then(showTemp);
 });
@@ -118,17 +122,19 @@ buttonCurr.addEventListener('click', (event) => {
 
 	function displayTempPos(response) {
 		console.log(response.data);
-		const realTimeTemp = `${Math.round(response.data.main.temp)}`;
+		const realTimeTemp = Math.round(response.data.main.temp);
 		const cityId = document.querySelector('#city');
 		const tempEle = document.querySelector('#temperature');
 		const dateElement = document.querySelector('#date');
 		const descriptionEle = document.querySelector('#description');
 		const iconEle = document.querySelector('#icon');
+		const maxTempEle = document.querySelector('#max');
+		const minTempEle = document.querySelector('#min');
 		const humidEle = document.querySelector('#humid');
 		const windEle = document.querySelector('#wind');
 
 		cityId.innerHTML = response.data.name;
-		tempEle.innerHTML = `${realTimeTemp}`;
+		tempEle.innerHTML = realTimeTemp;
 		dateElement.innerHTML = formatDate(response.data.dt * 1000);
 		descriptionEle.innerHTML = response.data.weather[0].description;
 		iconEle.setAttribute(
@@ -136,24 +142,45 @@ buttonCurr.addEventListener('click', (event) => {
 			`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
 		);
 		iconEle.setAttribute('alt', response.data.weather[0].description);
+		maxTempEle.innerHTML = Math.round(response.data.main.temp_max);
+		minTempEle.innerHTML = Math.round(response.data.main.temp_min);
 		humidEle.innerHTML = response.data.main.humidity;
-		windEle.innerHTML = `${Math.round(response.data.wind.speed)}`;
+		windEle.innerHTML = Math.round(response.data.wind.speed);
 	}
 });
 
-// 🙀Bonus Feature
-// Display a fake temperature (i.e 17) in Celsius and add a link to convert it to Fahrenheit. When clicking on it, it should convert the temperature to Fahrenheit. When clicking on Celsius, it should convert it back to Celsius.
-// const celsiusEl = document.querySelector('#celsius');
-// const fahrenheitEl = document.querySelector('#fahrenheit');
+// Display celsius or fahrenheit
+const celsiusEl = document.querySelector('#celsius');
+const fahrenheitEl = document.querySelector('#fahrenheit');
 
-// celsiusEl.addEventListener('click', () => {
-// 	event.preventDefault();
-// 	const temp = document.querySelector('#temperature');
-// 	temp.innerHTML = 26;
-// });
+celsiusEl.addEventListener('click', (event) => {
+	event.preventDefault();
+	const cityId = document.querySelector('#city');
+	const formId = document.querySelector('#form');
+	const keyApi = config.OPEN_WEATHER_API_KEY;
+	const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${(cityId.innerHTML =
+		formId.value)}&units=metric`;
 
-// fahrenheitEl.addEventListener('click', () => {
-// 	event.preventDefault();
-// 	const temp = document.querySelector('#temperature');
-// 	temp.innerHTML = 79;
-// });
+	function showCelsiusTemp(response) {
+		console.log(response.data);
+		const temp = document.querySelector('#temperature');
+		temp.innerHTML = Math.round(response.data.main.temp);
+	}
+	axios.get(`${apiUrl}&appid=${keyApi}`).then(showCelsiusTemp);
+});
+
+fahrenheitEl.addEventListener('click', (event) => {
+	event.preventDefault();
+	const cityId = document.querySelector('#city');
+	const formId = document.querySelector('#form');
+	const keyApi = config.OPEN_WEATHER_API_KEY;
+	const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${(cityId.innerHTML =
+		formId.value)}&units=metric`;
+
+	function showFahrenheitTemp(response) {
+		console.log(response.data);
+		const temp = document.querySelector('#temperature');
+		temp.innerHTML = Math.round((response.data.main.temp * 9) / 5 + 32);
+	}
+	axios.get(`${apiUrl}&appid=${keyApi}`).then(showFahrenheitTemp);
+});

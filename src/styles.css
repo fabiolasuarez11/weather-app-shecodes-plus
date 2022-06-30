@@ -20,6 +20,18 @@ button {
 	text-transform: capitalize;
 }
 
+#celsius,
+#fahrenheit {
+	text-decoration: none !important;
+	color: #3e4a61;
+}
+
+#celsius,
+#fahrenheit:hover {
+	text-decoration: none !important;
+	color: #ff895d;
+}
+
 .alerts {
 	color: #3e4a61;
 	text-decoration: none;
@@ -56,10 +68,6 @@ button {
 .fa-wind {
 	color: #537791;
 	font-size: 20px;
-}
-
-.humidity {
-	color: #537791;
 }
 
 .main-today,
