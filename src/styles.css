@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Sarala&display=swap');
 
 * {
-	margin: 20px 40px;
+	margin: 20px 34px;
 }
 
 h1,
@@ -35,6 +35,16 @@ button {
 .alerts {
 	color: #3e4a61;
 	text-decoration: none;
+}
+
+.more-dates {
+	color: #fff;
+	text-decoration: none !important;
+}
+
+.more-dates:hover {
+	color: #000;
+	text-decoration: none !important;
 }
 
 .card {
@@ -75,7 +85,7 @@ button {
 .week-temp {
 	color: #3e4a61;
 	font-family: 'Sarala', sans-serif;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .card-header,

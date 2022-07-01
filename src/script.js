@@ -100,7 +100,10 @@ buttonSearch.addEventListener('click', (event) => {
 		minTempEle.innerHTML = Math.round(response.data.main.temp_min);
 		humidEle.innerHTML = response.data.main.humidity;
 		windEle.innerHTML = Math.round(response.data.wind.speed);
+
+		getForecast(response.data.coord);
 	}
+
 	axios.get(`${apiUrl}&appid=${keyApi}`).then(showTemp);
 });
 
@@ -146,10 +149,12 @@ buttonCurr.addEventListener('click', (event) => {
 		minTempEle.innerHTML = Math.round(response.data.main.temp_min);
 		humidEle.innerHTML = response.data.main.humidity;
 		windEle.innerHTML = Math.round(response.data.wind.speed);
+
+		getForecast(response.data.coord);
 	}
 });
 
-// Display celsius or fahrenheit
+// Displaying celsius or fahrenheit
 const celsiusEl = document.querySelector('#celsius');
 const fahrenheitEl = document.querySelector('#fahrenheit');
 
@@ -184,3 +189,55 @@ fahrenheitEl.addEventListener('click', (event) => {
 	}
 	axios.get(`${apiUrl}&appid=${keyApi}`).then(showFahrenheitTemp);
 });
+
+// Forecast
+function getForecast(coords) {
+	console.log(coords);
+	const keyApi = config.OPEN_WEATHER_API_KEY;
+	const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${keyApi}&units=metric`;
+	console.log(apiUrl);
+	axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+	const dailyForecast = response.data.daily;
+	// console.log(dailyForecast);
+	const forecastEle = document.querySelector('#forecast');
+	// const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
+	let forecastHTML = `<div class="row">`;
+	dailyForecast.forEach((forecastDay, index) => {
+		if (index > 0 && index < 6) {
+			forecastHTML =
+				forecastHTML +
+				`
+      <div class="col m-0 p-0"> 
+			<div class="text-center week-temp">${formatDay(forecastDay.dt)}</div>
+			<div class="align-self-center">
+      <img
+          src="https://openweathermap.org/img/wn/${
+						forecastDay.dt.weather[0].icon
+					}@2x.png"
+          alt=""
+          width="80"
+        />
+			</div>
+      <div class="text-center week-temp">
+        <span class="m-0 w-100 text-center" id="max-temp">${Math.round(
+					forecastDay.temp.max
+				)}</span>° - <span class="m-0 ms-1" id="min-temp">${Math.round(
+					forecastDay.temp.min
+				)}</span>°
+      </div>
+      <div class="m-0 p-0 text-center week-temp"><span class="m-0 p-0" id="humid-day">${
+				forecastDay.feels_like.humidity
+			}</span>%<i class="fa-solid fa-droplet m-1 p-1"></i></div>
+			</div>
+				`;
+		}
+	});
+
+	forecastHTML = forecastHTML + `</div>`;
+	forecastEle.innerHTML = forecastHTML;
+	// console.log(forecastHTML);
+}
