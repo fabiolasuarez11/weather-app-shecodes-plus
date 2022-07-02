@@ -6,16 +6,6 @@ console.log(today);
 
 const header = document.querySelector('#header-first');
 
-const weekDays = [
-	'Sunday',
-	'Monday',
-	'Tuesday',
-	'Wednesday',
-	'Thursday',
-	'Friday',
-	'Saturday',
-];
-
 const yearMonths = [
 	'January',
 	'February',
@@ -31,9 +21,7 @@ const yearMonths = [
 	'December',
 ];
 
-header.innerHTML = `${
-	weekDays[today.getDay()]
-} ${today.getHours()}:${today.getMinutes()}, ${
+header.innerHTML = `${formatDate(today)}, ${
 	yearMonths[today.getMonth()]
 } ${today.getDate()}, ${today.getFullYear()}`;
 
@@ -61,7 +49,15 @@ function formatDate(timestamp) {
 function formatDay(timestamp) {
 	const today = new Date(timestamp * 1000);
 	const day = today.getDay();
-	let weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+	let weekDays = [
+		'Sunday',
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday',
+	];
 
 	return weekDays[day];
 }
@@ -75,7 +71,7 @@ buttonSearch.addEventListener('click', (event) => {
 	const formId = document.querySelector('#form');
 	const keyApi = config.OPEN_WEATHER_API_KEY;
 	const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${(cityId.innerHTML =
-		formId.value)}&units=metric`;
+		formId.value)}&units=imperial`;
 
 	function showTemp(response) {
 		console.log(response.data);
@@ -87,6 +83,7 @@ buttonSearch.addEventListener('click', (event) => {
 		const minTempEle = document.querySelector('#min');
 		const humidEle = document.querySelector('#humid');
 		const windEle = document.querySelector('#wind');
+		const forecastCity = document.querySelector('#forecast-city');
 
 		tempEle.innerHTML = Math.round(response.data.main.temp);
 		dateElement.innerHTML = formatDate(response.data.dt * 1000);
@@ -100,6 +97,7 @@ buttonSearch.addEventListener('click', (event) => {
 		minTempEle.innerHTML = Math.round(response.data.main.temp_min);
 		humidEle.innerHTML = response.data.main.humidity;
 		windEle.innerHTML = Math.round(response.data.wind.speed);
+		forecastCity.innerHTML = `${formId.value} Daily Forecast`;
 
 		getForecast(response.data.coord);
 	}
@@ -116,7 +114,7 @@ buttonCurr.addEventListener('click', (event) => {
 		const lat = position.coords.latitude;
 		const lon = position.coords.longitude;
 		const keyApi = config.OPEN_WEATHER_API_KEY;
-		const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${keyApi}`;
+		const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${keyApi}`;
 
 		axios.get(apiUrl).then(displayTempPos);
 	}
@@ -135,6 +133,7 @@ buttonCurr.addEventListener('click', (event) => {
 		const minTempEle = document.querySelector('#min');
 		const humidEle = document.querySelector('#humid');
 		const windEle = document.querySelector('#wind');
+		const forecastCity = document.querySelector('#forecast-city');
 
 		cityId.innerHTML = response.data.name;
 		tempEle.innerHTML = realTimeTemp;
@@ -149,52 +148,17 @@ buttonCurr.addEventListener('click', (event) => {
 		minTempEle.innerHTML = Math.round(response.data.main.temp_min);
 		humidEle.innerHTML = response.data.main.humidity;
 		windEle.innerHTML = Math.round(response.data.wind.speed);
+		forecastCity.innerHTML = `${response.data.name} Daily Forecast`;
 
 		getForecast(response.data.coord);
 	}
-});
-
-// Displaying celsius or fahrenheit
-const celsiusEl = document.querySelector('#celsius');
-const fahrenheitEl = document.querySelector('#fahrenheit');
-
-celsiusEl.addEventListener('click', (event) => {
-	event.preventDefault();
-	const cityId = document.querySelector('#city');
-	const formId = document.querySelector('#form');
-	const keyApi = config.OPEN_WEATHER_API_KEY;
-	const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${(cityId.innerHTML =
-		formId.value)}&units=metric`;
-
-	function showCelsiusTemp(response) {
-		console.log(response.data);
-		const temp = document.querySelector('#temperature');
-		temp.innerHTML = Math.round(response.data.main.temp);
-	}
-	axios.get(`${apiUrl}&appid=${keyApi}`).then(showCelsiusTemp);
-});
-
-fahrenheitEl.addEventListener('click', (event) => {
-	event.preventDefault();
-	const cityId = document.querySelector('#city');
-	const formId = document.querySelector('#form');
-	const keyApi = config.OPEN_WEATHER_API_KEY;
-	const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${(cityId.innerHTML =
-		formId.value)}&units=metric`;
-
-	function showFahrenheitTemp(response) {
-		console.log(response.data);
-		const temp = document.querySelector('#temperature');
-		temp.innerHTML = Math.round((response.data.main.temp * 9) / 5 + 32);
-	}
-	axios.get(`${apiUrl}&appid=${keyApi}`).then(showFahrenheitTemp);
 });
 
 // Forecast
 function getForecast(coords) {
 	console.log(coords);
 	const keyApi = config.OPEN_WEATHER_API_KEY;
-	const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${keyApi}&units=metric`;
+	const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${keyApi}&units=imperial`;
 	console.log(apiUrl);
 	axios.get(apiUrl).then(displayForecast);
 }
@@ -207,16 +171,16 @@ function displayForecast(response) {
 
 	let forecastHTML = `<div class="row">`;
 	dailyForecast.forEach((forecastDay, index) => {
-		if (index > 0 && index < 6) {
+		if (index > 0 && index < 7) {
 			forecastHTML =
 				forecastHTML +
 				`
-      <div class="col m-0 p-0"> 
+      <div class="col-2 m-0 p-0"> 
 			<div class="text-center week-temp">${formatDay(forecastDay.dt)}</div>
 			<div class="align-self-center">
       <img
           src="https://openweathermap.org/img/wn/${
-						forecastDay.dt.weather[0].icon
+						forecastDay.weather[0].icon
 					}@2x.png"
           alt=""
           width="80"
@@ -230,7 +194,7 @@ function displayForecast(response) {
 				)}</span>°
       </div>
       <div class="m-0 p-0 text-center week-temp"><span class="m-0 p-0" id="humid-day">${
-				forecastDay.feels_like.humidity
+				forecastDay.humidity
 			}</span>%<i class="fa-solid fa-droplet m-1 p-1"></i></div>
 			</div>
 				`;

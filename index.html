@@ -32,26 +32,24 @@
 
   <div class="card p-0 border-0 rounded-5">
     <div class="card-header border-0 p-3 m-0 rounded-5 text-center" id="header-first">
-
     </div>
     <div class="row">
       <div class="col col-md-6 m-0 p-0">
-        <p class="main-today ps-5 pt-4" id="city">Jacksonville</p>
+        <p class="main-today ps-5 pt-4" id="city">City Name</p>
         <p class="main-today ps-5">
-          <strong id="temperature" class="m-0">70</strong>
-          <a href="#" id="celsius">°C</a>|<a href="#" id="fahrenheit">°F</a>
+          <strong id="temperature" class="m-0">0</strong><strong>°F</strong>
         </p>
-        <p class="main-today ps-5  pt-4">Last updated: <span class="m-0" id="date">Friday 12:36</span></p>
-        <p class="main-today ps-5  pt-4" id="description">Partly Cloudy</p>
-        <img src="http://openweathermap.org/img/wn/02d@2x.png" alt="Weather condition" id="icon" class="ps-5 w-80" />
+        <p class="main-today ps-5  pt-4">Last updated: <span class="m-0" id="date">Date</span></p>
+        <p class="main-today ps-5  pt-4" id="description">Weather condition</p>
+        <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Weather condition" id="icon" class="ps-5 w-80" />
       </div>
       <div class="col col-md-6 m-0 pt-4">
         <p class="main-today ps-3  pt-4">
-          Max <span class="m-0 ms-1" id="max">84°</span> • Min <span class="m-0 ms-1" id="min">73°</span>
+          Max <span class="m-0 ms-1" id="max">0</span>° • Min <span class="m-0 ms-1" id="min">0</span>°
         </p>
-        <p class="main-today ps-3 pt-4">Humidity:<span class="m-0 ms-3" id="humid">81</span> %<i
+        <p class="main-today ps-3 pt-4">Humidity:<span class="m-0 ms-3" id="humid">0</span> %<i
             class="fa-solid fa-droplet m-0 p-2"></i></p>
-        <p class="main-today ps-3 pt-4">Wind:<span class="m-0 ms-3" id="wind">8</span> Km/H<i
+        <p class="main-today ps-3 pt-4">Wind:<span class="m-0 ms-3" id="wind">0</span> mph<i
             class="fa-solid fa-wind m-0 p-2"></i></p>
       </div>
     </div>
@@ -61,29 +59,70 @@
   </div>
 
   <div class="card p-0 border-0 rounded-5">
-    <div class="card-header border-0 p-3 m-0 rounded-5 text-center">
-      This week's forecast Jacksonville, NC
+    <div class="card-header border-0 p-3 m-0 rounded-5 text-center" id="forecast-city">
+      City Name Daily Forecast
     </div>
     <div id="forecast">
-      <!-- <div class="row">
-        <div class="col p-0 week-temp">Monday</div>
+      <div class="row">
+        <div class="col p-0 text-center week-temp">Weekday</div>
+        <div class="col p-0 text-center week-temp">Weekday</div>
+        <div class="col p-0 text-center week-temp">Weekday</div>
+        <div class="col p-0 text-center week-temp">Weekday</div>
+        <div class="col p-0 text-center week-temp">Weekday</div>
+        <div class="col p-0 text-center week-temp">Weekday</div>
       </div>
       <div class="row">
-        <div class="col m-0 p-0 w-100"><i class="fa-solid fa-cloud-sun"></i></div>
+        <div class="col m-0 ps-4 align-self-center week-temp"><img src="https://openweathermap.org/img/wn/01d@2x.png"
+            alt="Weather condition" width="60" /></div>
+        <div class="col m-0 ps-4 align-self-center week-temp"><img src="https://openweathermap.org/img/wn/01d@2x.png"
+            alt="Weather condition" width="60" /></div>
+        <div class="col m-0 ps-4 align-self-center week-temp"><img src="https://openweathermap.org/img/wn/01d@2x.png"
+            alt="Weather condition" width="60" /></div>
+        <div class="col m-0 ps-4 align-self-center week-temp"><img src="https://openweathermap.org/img/wn/01d@2x.png"
+            alt="Weather condition" width="60" /></div>
+        <div class="col m-0 ps-4 align-self-center week-temp"><img src="https://openweathermap.org/img/wn/01d@2x.png"
+            alt="Weather condition" width="60" /></div>
+        <div class="col m-0 ps-4 align-self-center week-temp"><img src="https://openweathermap.org/img/wn/01d@2x.png"
+            alt="Weather condition" width="60" /></div>
       </div>
       <div class="row">
-        <div class="col week-temp">
-          <span class="m-0 ms-1" id="max-temp">93°</span> - <span class="m-0 ms-1" id="min-temp">75°</span>
+        <div class="col text-center week-temp">
+          <span class="m-0 ms-1" id="max-temp">0°</span> - <span class="m-0 ms-1" id="min-temp">0°</span>
+        </div>
+        <div class="col text-center week-temp">
+          <span class="m-0 ms-1" id="max-temp">0°</span> - <span class="m-0 ms-1" id="min-temp">0°</span>
+        </div>
+        <div class="col text-center week-temp">
+          <span class="m-0 ms-1" id="max-temp">0°</span> - <span class="m-0 ms-1" id="min-temp">0°</span>
+        </div>
+        <div class="col text-center week-temp">
+          <span class="m-0 ms-1" id="max-temp">0°</span> - <span class="m-0 ms-1" id="min-temp">0°</span>
+        </div>
+        <div class="col text-center week-temp">
+          <span class="m-0 ms-1" id="max-temp">0°</span> - <span class="m-0 ms-1" id="min-temp">0°</span>
+        </div>
+        <div class="col text-center week-temp">
+          <span class="m-0 ms-1" id="max-temp">0°</span> - <span class="m-0 ms-1" id="min-temp">0°</span>
         </div>
       </div>
       <div class="row">
-        <div class="col m-0 p-0 w-100 week-temp"><i class="fa-solid fa-droplet m-2 p-2"></i><span class="m-0 ms-3"
-            id="humid-day">24</span>%</div>
-      </div> -->
+        <div class="col m-0 p-0 w-100 text-center week-temp"><span class="m-0 ms-1" id="humid-day">0</span>%<i
+            class="fa-solid fa-droplet m-1 p-1"></i></div>
+        <div class="col m-0 p-0 w-100 text-center week-temp"><span class="m-0 ms-1" id="humid-day">0</span>%<i
+            class="fa-solid fa-droplet m-1 p-1"></i></div>
+        <div class="col m-0 p-0 w-100 text-center week-temp"><span class="m-0 ms-1" id="humid-day">0</span>%<i
+            class="fa-solid fa-droplet m-1 p-1"></i></div>
+        <div class="col m-0 p-0 w-100 text-center week-temp"><span class="m-0 ms-1" id="humid-day">0</span>%<i
+            class="fa-solid fa-droplet m-1 p-1"></i></div>
+        <div class="col m-0 p-0 w-100 text-center week-temp"><span class="m-0 ms-1" id="humid-day">0</span>%<i
+            class="fa-solid fa-droplet m-1 p-1"></i></div>
+        <div class="col m-0 p-0 w-100 text-center week-temp"><span class="m-0 ms-1" id="humid-day">0</span>%<i
+            class="fa-solid fa-droplet m-1 p-1"></i></div>
+      </div>
     </div>
     <div class="card-footer border-0 p-3 m-0 rounded-5 text-center">
-      <button class="btn btn-secondary btn-lg rounded-5" type="submit"><a href="https://weather.com/weather/tenday"
-          target="_blank" class="more-dates">More Dates</a></button>
+      <button class="btn btn-secondary btn-lg rounded-5" type="submit"><a href="https://weather.com/" target="_blank"
+          class="more-dates">More Dates</a></button>
     </div>
   </div>
 

@@ -20,18 +20,6 @@ button {
 	text-transform: capitalize;
 }
 
-#celsius,
-#fahrenheit {
-	text-decoration: none !important;
-	color: #3e4a61;
-}
-
-#celsius,
-#fahrenheit:hover {
-	text-decoration: none !important;
-	color: #ff895d;
-}
-
 .alerts {
 	color: #3e4a61;
 	text-decoration: none;
@@ -48,7 +36,7 @@ button {
 }
 
 .card {
-	background-color: #dffcad !important;
+	background-color: #caf67e !important;
 }
 
 .main-header {
