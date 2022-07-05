@@ -182,7 +182,7 @@ function displayForecast(response) {
           src="https://openweathermap.org/img/wn/${
 						forecastDay.weather[0].icon
 					}@2x.png"
-          alt=""
+          alt="Weather condition"
           width="80"
         />
 			</div>
